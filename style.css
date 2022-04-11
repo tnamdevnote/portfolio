@@ -7,6 +7,7 @@
     --color-secondary: #ffb74d;
     --color-secondary-light: #ffe97d;
     --color-secondary-dark: #c88719;
+    --color-font: #000000;
 
     /* Font Size */
     --font-large: 48px;
@@ -27,4 +28,34 @@
 /* Universal tags */
 * {
     box-sizing: border-box;
+}
+
+/* Typography */
+
+h1 {
+    font-size: var(--font-large);
+    font-weight: var(--weight-bold);
+    color: var(--color-font);
+    margin: 16px 0;
+}
+
+h2 {
+    font-size: var(--weight-regular);
+    font-weight: var(--weight-semi-bold);
+    color: var(--color-font);
+    margin: 8px 0;
+}
+
+h3 {
+    font-size: var(--weight-regular);
+    font-weight: var(--weight-regular);
+    color: var(--color-font);
+    margin: 8px 0;
+}
+
+p {
+    font-size: var(--weight-regular);
+    font-weight: var(--weight-regular);
+    color: var(--color-font);
+    margin: 4px 0;
 }
