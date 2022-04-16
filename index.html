@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
-    <script src="https://kit.fontawesome.com/72cdeaf459.js" crossorigin="anonymous" defer></script>
+    <script src="https://kit.fontawesome.com/72cdeaf459.js" crossorigin="anonymous"></script>
     <script src="main.js" defer></script>
 </head>
 <body>
@@ -42,49 +42,53 @@
         <button class="home__contact">Contact Me</button>
     </section>
     <!-- About -->
-    <section id="about">
+    <section id="about" class="section">
         <h1>About me</h1>
         <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ullamcorper tellus nec lectus aliquam fringilla vitae ac ante. Mauris id elit sed leo volutpat sagittis. Proin auctor dui nisi, at aliquet elit molestie nec. Morbi sed interdum massa. Aliquam hendrerit mi mi, at tristique mi eleifend nec. Orci varius natoque.
         </p>
-        <div class="about___majors">
-            <div class="major">
-                <div class="major__icon">
-                    <i class="fa-brands fa-react"></i>
-                </div>
-                <div class="major__title">FrontEnd</div>
-                <div class="major__description">HTML, CSS, JavaScript</div>
-            </div>
-            <div class="major">
-                <div class="major__icon">
-                    <i class="fa-brands fa-react"></i>
-                </div>
-                <div class="major__title">React</div>
-                <div class="major__description">Redux, Saga, Typescript</div>
-            </div>
+        <div class="about__majors">
             <div class="major">
                 <div class="major__icon">
                     <i class="fa-brands fa-html5"></i>
                 </div>
-                <div class="major__title">Backend</div>
-                <div class="major__description">Node.js, Express.js, Jest,<br />Postgresql, Snowflake</div>
+                <h2 class="major__title">FrontEnd</h2>
+                <p class="major__description">HTML, CSS, JavaScript</p>
+            </div>
+            <div class="major">
+                <div class="major__icon">
+                    <i class="fa-brands fa-react"></i>
+                </div>
+                <h2 class="major__title">React</h2>
+                <p class="major__description">Redux, Saga, Typescript</p>
+            </div>
+            <div class="major">
+                <div class="major__icon">
+                    <i class="fa-solid fa-server"></i>
+                </div>
+                <h2 class="major__title">Backend</h2>
+                <p class="major__description">Node.js, Express.js, Jest,<br />Postgresql, Snowflake</p>
             </div>
         </div>
         <div class="about__jobs">
             <div class="job">
                 <img src="" alt="eidex" class="job__logo">
-                <p class="job__name">Software Engineer</p>
-                <p class="job__period">1 year</p>
+                <div class="job__description">
+                    <p class="job__name">Software Engineer</p>
+                    <p class="job__period">1 year</p>
+                </div>
             </div>
             <div class="job">
                 <img src="" alt="eidex" class="job__logo">
-                <p class="job__name">Data Warehouse Analyst</p>
-                <p class="job__period">2 years</p>
+                <div class="job__description">
+                    <p class="job__name">Data Warehouse Analyst</p>
+                    <p class="job__period">2 years</p>
+                </div>
             </div>
         </div>
     </section>
     <!-- Skills -->
-    <section id="skills">
+    <section id="skills" class="section">
         <h1>Skills</h1>
         <h2>Skills & Attributes</h2>
         <p>
@@ -168,7 +172,7 @@
         </div>
     </section>
     <!-- Work -->
-    <section id="work">
+    <section id="work" class="section">
         <h1>My Work</h1>
         <h3>Projects</h3>
         <div class="work__categories">
@@ -202,7 +206,7 @@
         </div>
     </section>
     <!-- Testimonials -->
-    <section id="testimonials">
+    <section id="testimonials" class="section">
         <h1>Testimonials</h1>
         <h3>See what they say about me</h3>
         <div class="testimonials">
@@ -227,7 +231,7 @@
         </div>
     </section>
     <!-- Contact -->
-    <section id="contact">
+    <section id="contact" class="section">
         <h1 class="contact__title">Let's talk</h1>
         <h2 class="contact__email">taekbeen93@gmail.com</h2>
         <div class="contatct__link">
