@@ -16,10 +16,20 @@ document.addEventListener('scroll', () => {
 // Scroll to selected page when the user selects a page on the navbar menu
 const navbarMenu = document.querySelector('.navbar__menu');
 navbarMenu.addEventListener('click', (e) => {
-    const target = event.target;
+    const target = e.target;
     const link = target.dataset.link;
     if (link === undefined) return;
     
-    const scrollTo = document.querySelector(link);
-    scrollTo.scrollIntoView({ behavior: "smooth", block: "start"});
-})
+    scrollIntoView(link);
+});
+
+// Scroll to Contact page when the user clicks Contact Me button in Home
+const contactBtn = document.querySelector('.home__contact');
+contactBtn.addEventListener('click', ()=> {
+    scrollIntoView('#contact')
+});
+
+const scrollIntoView = (selector) => {
+    const scrollTo = document.querySelector(selector);
+    scrollTo.scrollIntoView({ behavior: "smooth", block: "start" })
+} 
