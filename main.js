@@ -29,7 +29,24 @@ contactBtn.addEventListener('click', ()=> {
     scrollIntoView('#contact')
 });
 
+// Make page transparent when user scrolls down
+const home = document.querySelector('.home__container');
+const homeHeight = home.getBoundingClientRect().height;
+document.addEventListener('scroll', () => {
+    home.style.opacity = 1 - window.scrollY/homeHeight;
+})
+
+
+
+
+
+
+
+
+
+
 const scrollIntoView = (selector) => {
     const scrollTo = document.querySelector(selector);
     scrollTo.scrollIntoView({ behavior: "smooth", block: "start" })
-} 
+};
+

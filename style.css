@@ -153,6 +153,10 @@ p {
     text-align: center;
 }
 
+#home.fade--out {
+    opacity: 0;
+}
+
 .home__avatar {
     width: 250px;
     height: 250px;
@@ -162,7 +166,7 @@ p {
 
 .home__title,
 .home__description {
-    color: var(--color-light-white)
+    color: var(--color-light-white);
 }
 
 .home__contact {
