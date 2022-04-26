@@ -472,6 +472,28 @@ p {
     color: var(--color-secondary-light);
 }
 
+#scrollTop {
+    /* display: none; */
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    background-color: var(--color-primary-light);
+    color: var(--color-light-white);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    transition: all var(--animation-duration);
+}
+
+#scrollTop.scrollTop--show {
+    pointer-events: auto;
+    opacity: 1;
+    /* display: block; */
+}
+
 /* for below 768px screend width */
 @media screen and (max-width: 768px) {
     .navbar__toggle-btn {

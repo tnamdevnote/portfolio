@@ -36,9 +36,20 @@ document.addEventListener('scroll', () => {
     home.style.opacity = 1 - window.scrollY/homeHeight;
 })
 
+// Add Scroll-to-top button at the bottom right corner of the window
+const scrollTopBtn = document.querySelector('#scrollTop');
+document.addEventListener('scroll', () => {
+    if (window.scrollY > homeHeight) {
+        scrollTopBtn.classList.add('scrollTop--show');
+    } else {
+        scrollTopBtn.classList.remove('scrollTop--show');
+    }
+})
 
-
-
+// Handle clikc on the "arrow up" button
+scrollTopBtn.addEventListener('click', () => {
+   scrollIntoView('#home');
+})
 
 
 
