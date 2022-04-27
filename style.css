@@ -351,6 +351,13 @@ p {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    opacity: 1;
+    transition: all var(--animation-duration);
+}
+
+.work__projects.anime-out {
+    opacity: 0.7;
+    transform: scale(0.96) translateY(40px);
 }
 
 .project {
@@ -362,6 +369,10 @@ p {
     height: 250px;
     margin: 2px;
     background-color: var(--color-secondary);
+}
+
+.project.invisible {
+    display: none;
 }
 
 .project__img {

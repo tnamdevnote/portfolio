@@ -51,6 +51,27 @@ scrollTopBtn.addEventListener('click', () => {
    scrollIntoView('#home');
 })
 
+// Filter Projects Based on the categories
+const workCategories = document.querySelector('.work__categories');
+const projectContainer = document.querySelector('.work__projects');
+const projects = document.querySelectorAll('.project');
+workCategories.addEventListener('click', (e) => {
+    const category = e.target.dataset.category || e.target.parentNode.dataset.category;
+    if(category === null) return;
+
+    projectContainer.classList.add('anime-out');
+    setTimeout(() => {
+        projects.forEach(project => {
+            if (category === '*' || category === project.dataset.type) {
+                project.classList.remove('invisible');
+            } else {
+                project.classList.add('invisible');
+            }
+        })
+        projectContainer.classList.remove('anime-out');
+    }, 200)
+})
+
 
 
 
