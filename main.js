@@ -19,7 +19,6 @@ navbarMenu.addEventListener('click', (e) => {
     const target = e.target;
     const link = target.dataset.link;
     if (link === undefined) return;
-    
     scrollIntoView(link);
 });
 
@@ -46,7 +45,7 @@ document.addEventListener('scroll', () => {
     }
 })
 
-// Handle clikc on the "arrow up" button
+// Handle click on the "arrow up" button
 scrollTopBtn.addEventListener('click', () => {
    scrollIntoView('#home');
 })
@@ -58,6 +57,12 @@ const projects = document.querySelectorAll('.project');
 workCategories.addEventListener('click', (e) => {
     const category = e.target.dataset.category || e.target.parentNode.dataset.category;
     if(category === null) return;
+
+    // Remove selection from the previous item and select the new one
+    const active = document.querySelector('.category__btn.active');
+    active.classList.remove('active');
+    const target = e.target.nodeName === 'BUTTON' ? e.target : e.target.parentNode;
+    target.classList.add('active');
 
     projectContainer.classList.add('anime-out');
     setTimeout(() => {
@@ -71,11 +76,6 @@ workCategories.addEventListener('click', (e) => {
         projectContainer.classList.remove('anime-out');
     }, 200)
 })
-
-
-
-
-
 
 const scrollIntoView = (selector) => {
     const scrollTo = document.querySelector(selector);
