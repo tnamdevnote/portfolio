@@ -11,6 +11,7 @@ document.addEventListener('scroll', () => {
     } else {
         navbar.classList.remove('navbar--dark');
     }
+    navbarMenu.classList.remove('active')
 });
 
 // Scroll to selected page when the user selects a page on the navbar menu
@@ -21,6 +22,12 @@ navbarMenu.addEventListener('click', (e) => {
     if (link === undefined) return;
     scrollIntoView(link);
 });
+
+// Open up navbar when the user clicks toggle button
+const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
+navbarToggleBtn.addEventListener('click', () => {
+    navbarMenu.classList.toggle('active');
+})
 
 // Scroll to Contact page when the user clicks Contact Me button in Home
 const contactBtn = document.querySelector('.home__contact');
