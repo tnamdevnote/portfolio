@@ -11,7 +11,7 @@ document.addEventListener('scroll', () => {
     } else {
         navbar.classList.remove('navbar--dark');
     }
-    navbarMenu.classList.remove('active')
+    // navbarMenu.classList.remove('active')
 });
 
 // Scroll to selected page when the user selects a page on the navbar menu
@@ -19,9 +19,36 @@ const navbarMenu = document.querySelector('.navbar__menu');
 navbarMenu.addEventListener('click', (e) => {
     const target = e.target;
     const link = target.dataset.link;
+    const activeMenu = document.querySelector('.navbar__menu__item.active');
+    activeMenu.classList.remove('active');
+    target.classList.add('active');
     if (link === undefined) return;
     scrollIntoView(link);
 });
+
+// Activate navbar menu as user scroll through the browser
+const sections = document.querySelectorAll('.section');
+const navbarMenuItem = document.querySelector('.navbar__menu__item.active');
+const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5,
+};
+
+const handleIntersect = (entries) => {
+    
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            navbarMenuItem.classList.add('active')
+            console.log(entry.target.id, navbarMenuItem);
+        } else {
+            navbarMenuItem.classList.remove('active')
+        }
+    })
+};
+
+const observer = new IntersectionObserver(handleIntersect, options);
+sections.forEach((section) => observer.observe(section))
 
 // Open up navbar when the user clicks toggle button
 const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
