@@ -26,29 +26,63 @@ navbarMenu.addEventListener('click', (e) => {
     scrollIntoView(link);
 });
 
+// Scroll to home when the user clicks the logo
+const navLogo = document.querySelector('.navbar__logo');
+navLogo.addEventListener('click', () => {
+    scrollIntoView('#home')
+});
+
 // Activate navbar menu as user scroll through the browser
-const sections = document.querySelectorAll('.section');
-const navbarMenuItem = document.querySelector('.navbar__menu__item.active');
-const options = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.5,
+const sectionIds = ['#home', '#about', '#skills', '#work', '#testimonials', '#contact'];
+const sections = sectionIds.map(id => document.querySelector(id));
+const navItems = sectionIds.map(id => 
+    document.querySelector(`[data-link='${id}']`)
+);
+
+let selectedNavIndex = 0;
+let selectedNavItem = navItems[0];
+const selectNavItem = (selected) => {
+    selectedNavItem.classList.remove('active');
+    selectedNavItem = selected;
+    selectedNavItem.classList.add('active');
+}
+
+const scrollIntoView = (selector) => {
+    const scrollTo = document.querySelector(selector);
+    scrollTo.scrollIntoView({ behavior: "smooth", block: "start" });
+    selectNavItem(navItems[sectionIds.indexOf(selector)]);
 };
 
-const handleIntersect = (entries) => {
+const options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.3,
+    };
     
+const handleIntersect = (entries, observer) => {
     entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            navbarMenuItem.classList.add('active')
-            console.log(entry.target.id, navbarMenuItem);
-        } else {
-            navbarMenuItem.classList.remove('active')
+        if (!entry.isIntersecting && entry.intersectionRatio > 0) {
+            const index = sectionIds.indexOf(`#${entry.target.id}`);
+            if(entry.boundingClientRect.y < 0) {
+                selectedNavIndex = index + 1
+            } else {
+                selectedNavIndex = index -1
+            }
         }
     })
 };
 
 const observer = new IntersectionObserver(handleIntersect, options);
-sections.forEach((section) => observer.observe(section))
+sections.forEach((section) => observer.observe(section));
+
+window.addEventListener('wheel', () => {
+    if (window.scrollY === 0) {
+        selectedNavIndex = 0;
+    } else if (Math.round(window.scrollY + window.innerHeight) >= document.body.clientHeight) {
+        selectedNavIndex = navItems.length-1;
+    }
+    selectNavItem(navItems[selectedNavIndex]);
+})
 
 // Open up navbar when the user clicks toggle button
 const navbarToggleBtn = document.querySelector('.navbar__toggle-btn');
@@ -109,10 +143,5 @@ workCategories.addEventListener('click', (e) => {
         })
         projectContainer.classList.remove('anime-out');
     }, 200)
-})
-
-const scrollIntoView = (selector) => {
-    const scrollTo = document.querySelector(selector);
-    scrollTo.scrollIntoView({ behavior: "smooth", block: "start" })
-};
+});
 
